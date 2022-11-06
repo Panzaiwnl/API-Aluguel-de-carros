@@ -37,6 +37,6 @@ describe("Create category", () => {
       await createCategoryUseCase.execute(newCategory);
 
       await createCategoryUseCase.execute(newCategory);
-    }).rejects.toBeInstanceOf(AppError);
+    }).rejects.toEqual(new AppError("Category already exists"));
   });
 });

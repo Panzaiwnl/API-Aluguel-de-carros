@@ -5,6 +5,10 @@ import { IRentalsRepository } from "../IRentalsRepository";
 
 
 class RentalsRepositoryInMemory implements IRentalsRepository {
+   findByUserId(user_id: string): Promise<Rentals[]> {
+      throw new Error("Method not implemented.");
+   }
+ 
   
    rentals: Rentals[] = [];
 
@@ -40,6 +44,14 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
       
    }
 
+   async findById(id: string): Promise<Rentals> {
+      const rental = await this.rentals.find(rental => rental.id ===id);
+
+      return rental;
+   }
+
+
+   
     
 
 
