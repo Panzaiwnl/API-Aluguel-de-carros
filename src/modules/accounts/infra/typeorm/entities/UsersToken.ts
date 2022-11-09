@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { User } from "./User";
+import {v4 as uuidv4} from "uuid"
 
 
 
@@ -27,12 +28,8 @@ export class UsersToken{
 
     constructor(){
         if(!this.id){
-            this.id = uuidv4()
+            this.id = uuidv4();
         }
     }
 
-}
-
-function uuidv4(): string {
-    throw new Error("Function not implemented.");
 }

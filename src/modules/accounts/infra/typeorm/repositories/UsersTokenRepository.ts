@@ -10,6 +10,10 @@ class UsersTokenRepository implements IUsersTokenRepository{
     constructor(){
         this.repository = getRepository(UsersToken)
     }
+    deleteById(user_id: string): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+    
 
 
     async create({ user_id, refresh_token, expires_date }: ICreateUsersTokenDTO): Promise<UsersToken> {
@@ -21,6 +25,15 @@ class UsersTokenRepository implements IUsersTokenRepository{
 
         return usersToken;
         
+    }
+
+    async findByUserIdAndRefreshToken(user_id: string, refresh_token: string): Promise<UsersToken> {
+        const userToken = await this.repository.findOne({
+            user_id,
+            refresh_token
+        });
+
+        return userToken;
     }
 
 }
